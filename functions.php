@@ -337,11 +337,11 @@ function comment_mail_notify($comment_id) {
 }
 add_action('comment_post', 'comment_mail_notify');
  
-/* 自动加勾选栏 */
+/* 自动加勾选栏 
 function add_checkbox() {
   echo '<input type="checkbox" name="comment_mail_notify" id="comment_mail_notify" value="comment_mail_notify" checked="checked" style="margin-left:20px;" /><label for="comment_mail_notify">有人回复时邮件通知我</label>';
 }
-add_action('comment_form', 'add_checkbox');
+add_action('comment_form', 'add_checkbox');*/
 
 //彩色标签云
 function colorCloud($text) {

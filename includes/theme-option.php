@@ -73,17 +73,10 @@ function lovnvns_form() {
                 <td>
                     <textarea style="width:35em; height:5em;" name="lovnvns_announce"><?php echo get_option('lovnvns_announce'); ?></textarea>
                     <br />
-                    <span class="description">将在网站头部显示，不设置则默认显示作者提供的公告信息</span>
+                    <span class="description">将在网站头部显示，不设置则为空</span>
                 </td>
         	</tr>
-			<tr valign="top">
-                <th scope="row"><label>建站日期</label></th>
-                <td>
-                    <textarea style="width:35em; height:2em;" name="lovnvns_date"><?php echo get_option('lovnvns_date'); ?></textarea>
-                    <br />
-                    <span class="description">将在网站首页显示</span>
-                </td>
-        	</tr>
+			
 			<tr valign="top">
                 <th scope="row"><label>CMS首侧上部分类ID设置</label></th>
                 <td>
@@ -144,7 +137,7 @@ function lovnvns_form() {
                 <td>
                     <textarea style="width:35em; height:2em;" name="lovnvns_email"><?php echo get_option('lovnvns_email'); ?></textarea>
                     <br />
-                    <span class="description">输入电子邮件地址，不输入则链接作者电子邮件地址</span>
+                    <span class="description">输入电子邮件地址，不输入则为空</span>
                 </td>
         	</tr>
             <tr valign="top">
@@ -152,39 +145,40 @@ function lovnvns_form() {
                 <td>
                     <textarea style="width:35em; height:2em;" name="lovnvns_weibo"><?php echo get_option('lovnvns_weibo'); ?></textarea>
                     <br />
-                    <span class="description">输入微博地址，不输入则链接作者的新浪微博</span>
+                    <span class="description">输入微博地址，不输入则为空</span>
                 </td>
         	</tr>
             <tr valign="top">
-                <th scope="row"><label>我的RSS订阅地址</label></th>
+                <th scope="row"><label>qq客服号</label></th>
                 <td>
                     <textarea style="width:35em; height:2em;" name="lovnvns_rss"><?php echo get_option('lovnvns_rss'); ?></textarea>
                     <br />
-                    <span class="description">输入RSS订阅地址，不输入则链接作者的订阅地址</span>
+                    <span class="description">qq客服号</span>
                 </td>
         	</tr>
+            <tr valign="top">
+                <th scope="row"><label>微信二维码地址</label></th>
+                <td>
+                    <textarea style="width:35em; height:2em;" name="lovnvns_sitemap"><?php echo get_option('lovnvns_sitemap'); ?></textarea>
+                    <br />
+                    <span class="description">微信二维码地址，不输入则为空</span>
+                </td>
+            </tr>
 			<tr valign="top">
                 <th scope="row"><label>右侧关于我们地址</label></th>
                 <td>
                     <textarea style="width:35em; height:2em;" name="lovnvns_about"><?php echo get_option('lovnvns_about'); ?></textarea>
                     <br />
-                    <span class="description">输入关于我们地址，不输入则链接作者的地址</span>
+                    <span class="description">输入关于我们地址，不输入则为空</span>
                 </td>
         	</tr>
-			<tr valign="top">
-                <th scope="row"><label>右侧站点地图地址</label></th>
-                <td>
-                    <textarea style="width:35em; height:2em;" name="lovnvns_sitemap"><?php echo get_option('lovnvns_sitemap'); ?></textarea>
-                    <br />
-                    <span class="description">输站点地图地址，不输入则链接作者的地址</span>
-                </td>
-        	</tr>
+			
 			<tr valign="top">
                 <th scope="row"><label>右侧百度地图地址</label></th>
                 <td>
                     <textarea style="width:35em; height:2em;" name="lovnvns_sitemap_baidu"><?php echo get_option('lovnvns_sitemap_baidu'); ?></textarea>
                     <br />
-                    <span class="description">输入百度地图地址，不输入则链接作者的地址</span>
+                    <span class="description">输入百度地图地址，不输入则为空</span>
                 </td>
         	</tr>
 			<tr valign="top">
@@ -192,7 +186,7 @@ function lovnvns_form() {
                 <td>
                     <textarea style="width:35em; height:2em;" name="lovnvns_links"><?php echo get_option('lovnvns_links'); ?></textarea>
                     <br />
-                    <span class="description">输入首页更多链接地址，不输入则显示作者的链接地址</span>
+                    <span class="description">输入首页更多链接地址，不输入则为空</span>
                 </td>
         	</tr>
 			
@@ -219,12 +213,20 @@ function lovnvns_form() {
 			<tr valign="top">
             	<td><h3 id="lovnvns_ad">广告设置</h3></td>
         	</tr>
+            <tr valign="top">
+                <th scope="row"><label>首页顶部横幅小图广告</label></th>
+                <td>
+                    <textarea style="width:35em; height:2em;" name="lovnvns_date"><?php echo get_option('lovnvns_date'); ?></textarea>
+                    <br />
+                    <span class="description">首页顶部横幅广告代码，推荐大小： size: 980*60</span>
+                </td>
+            </tr>
 			<tr valign="top">
-                <th scope="row"><label>首页顶部横幅广告</label></th>
+                <th scope="row"><label>首页顶部横幅大图广告</label></th>
                 <td>
                     <textarea style="width:35em; height:5em;" name="lovnvns_banner_top"><?php echo get_option('lovnvns_banner_top'); ?></textarea>
                     <br />
-					<span class="description">首页顶部横幅广告代码，推荐大小： size: 980*60<br />不设置则默认显示作者提供的广告信息<br />示例：<DIV class="dp-highlighter nogutter" style="width:420px;"><DIV class=bar></DIV>
+					<span class="description">首页顶部横幅广告代码，推荐大小： size: 980*<br />示例：<DIV class="dp-highlighter nogutter" style="width:420px;"><DIV class=bar></DIV>
 <OL class=dp-c start=0>
 <LI class=alt><SPAN><SPAN>&lt;a&nbsp;href=</SPAN><SPAN class=string>"链接地址"</SPAN><SPAN>&gt;&lt;img&nbsp;src=</SPAN><SPAN class=string>"图片地址"</SPAN><SPAN>&nbsp;alt=</SPAN><SPAN class=string>"图片说明"</SPAN><SPAN>/&gt;&lt;/a&gt;&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV></span>            
                 </td></tr>
@@ -233,7 +235,7 @@ function lovnvns_form() {
                 <td>
                     <textarea style="width:35em; height:10em;" name="lovnvns_banner_ad"><?php echo get_option('lovnvns_banner_ad'); ?></textarea>
                     <br />
-					<span class="description">banner广告代码，推荐大小： size: 748*180<br />不设置则默认显示作者提供的广告信息<br />示例：<DIV class="dp-highlighter nogutter"style="width:420px;"><DIV class=bar></DIV>
+					<span class="description">banner广告代码，推荐大小： size: 748*180<br />不设置则为空<br />示例：<DIV class="dp-highlighter nogutter"style="width:420px;"><DIV class=bar></DIV>
 <OL class=dp-c start=0>
 <LI class=alt><SPAN><SPAN>&lt;li&gt;&lt;a&nbsp;href=</SPAN><SPAN class=string>"链接地址"</SPAN><SPAN>&gt;&lt;img&nbsp;src=</SPAN><SPAN class=string>"图片地址"</SPAN><SPAN>&nbsp;/&gt;&lt;/a&gt;&lt;/li&gt; &nbsp;&nbsp;</SPAN></SPAN></LI>
 <LI><SPAN>&lt;li&gt;&lt;a&nbsp;href=</SPAN><SPAN class=string>"链接地址"</SPAN><SPAN>&gt;&lt;img&nbsp;src=</SPAN><SPAN class=string>"图片地址"</SPAN><SPAN>&nbsp;/&gt;&lt;/a&gt;&lt;/li&gt; &nbsp;&nbsp;</SPAN></SPAN></LI>
@@ -255,7 +257,7 @@ function lovnvns_form() {
                 <td>
                     <textarea style="width:35em; height:5em;" name="lovnvns_sidebar_ad"><?php echo get_option('lovnvns_sidebar_ad'); ?></textarea>
                     <br />
-					<span class="description">直接放入广告代码即可，推荐大小：220*×120*<br />不设置则默认显示作者提供的广告信息<br />示例：<DIV class="dp-highlighter nogutter"style="width:420px;"><DIV class=bar></DIV>
+					<span class="description">直接放入广告代码即可，推荐大小：220*×120*<br />不设置则默认显示为空<br />示例：<DIV class="dp-highlighter nogutter"style="width:420px;"><DIV class=bar></DIV>
 <OL class=dp-c start=0>
 <LI class=alt><SPAN><SPAN>&lt;a&nbsp;href=</SPAN><SPAN class=string>"链接地址"</SPAN><SPAN>&gt;&lt;img&nbsp;src=</SPAN><SPAN class=string>"图片地址"</SPAN><SPAN>&nbsp;alt=</SPAN><SPAN class=string>"图片说明"</SPAN><SPAN>/&gt;&lt;/a&gt;&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV></span>
                 </td>

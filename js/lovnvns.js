@@ -44,3 +44,35 @@ jQuery(document).ready(function() {
 		return false
 	})
 });
+
+/*公告滚动js*/
+jQuery(document).ready(function(){ 
+		var $this = $("#gongao"); 
+		var scrollTimer; 
+		$this.hover(function(){ 
+			clearInterval(scrollTimer); 
+			},function(){ 
+				scrollTimer = setInterval(function(){ 
+				scrollNews( $this ); 
+			}, 2000 ); 
+		}).trigger("mouseout"); 
+}); 
+
+function scrollNews(obj){ 
+	var $self = obj.find("ul:first"); 
+	var lineHeight = $self.find("li:first").height(); 
+	$self.animate({ "margin-top" : -lineHeight +"px" },600 , function(){ 
+		$self.css({"margin-top":"0px"}).find("li:first").appendTo($self); 
+	}) 
+} 
+
+/*首页头广告大图变小图onload="showAds()"*/
+function showAds(){
+	$(".adsS").fadeOut("slow",function(){$('.adsB').slideDown('show')}); 
+	setTimeout(function(){
+		$('.adsB').slideUp('slow',function(){$('.adsS').fadeIn('show');});
+	},5000);
+    
+}
+  
+

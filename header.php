@@ -1,43 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head profile="http://gmpg.org/xfn/11">
-    <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>
-    ; charset=
-    <?php bloginfo('charset'); ?>
-    " />
+    <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
     <meta http-equiv="x-ua-compatible" content="ie=7" />
     <?php include('includes/seo.php'); ?>
-    <link type="text/css" rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>
-    " />
-    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>
-    /highlight.css" />
-    <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?>
-    RSS Feed" href="
-    <?php bloginfo('rss2_url'); ?>
-    " />
-    <link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name'); ?>
-    Atom Feed" href="
-    <?php bloginfo('atom_url'); ?>
-    " />
-    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>
-    " />
+    <link type="text/css" rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />
+    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/highlight.css" />
+    <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
+    <link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name'); ?> Atom Feed" href="<?php bloginfo('atom_url'); ?>" />
+    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+    
     <?php wp_enqueue_script('jquery'); ?>
     <?php wp_head(); ?>
     <?php if ( is_singular() ){ ?>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/comments-ajax.js"></script>
-    <?php } ?></head>
+    <?php } ?>
+</head>
 <body>
     <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/lovnvns.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.lazyload.js"></script>
     <SCRIPT src="<?php bloginfo('template_url'); ?>/js/mobanwang.js" type=text/javascript></SCRIPT>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/scrolltopcontrol.js"></script>
+
     <script type="text/javascript">
     jQuery(document).ready(
         function($){
             $("img").lazyload({
             placeholder : "<?php bloginfo('template_url'); ?>/images/grey.gif",
-            effect      : "fadeIn"
+            effect      : "fadeIn",
+            container   : $("#divcom")
         });
     });
 </script>
@@ -145,6 +137,7 @@ else { ?>
     </div>
 </div>
 -->
+
 <div id="content">
     <div class="topnav">
         <?php wp_nav_menu( array( 'container' =>

@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 <div id="gongaobox">
+<span></span>
 	<div id="gongao">
         <!--自己做了一个动态头部公告-->
 	    <ul>
@@ -15,7 +16,7 @@
 		        if (have_posts()) : 
 		        	while (have_posts()) : the_post();
 			?>
-			<li><span></span>
+			<li>
 				<a href="<?php the_permalink(); ?> "title="<?php the_title(); ?>">
 					<?php the_title(); ?>
 				</a>
@@ -40,35 +41,47 @@
 		<input type="submit" id="submit" value="" class="sousuo" />
 	</form>
 </div>
-<!--
-   <div id="gongaor">
-	建站日期： <strong><?php echo get_option('lovnvns_date');?></strong>
-	运行天数：
-	<strong><?php echo floor((time()-strtotime(get_option('lovnvns_date')))/86400); ?></strong>
-	天　最后更新：
-	<strong>
-		<?php $last = $wpdb->
-		get_results("SELECT MAX(post_modified) AS MAX_m FROM $wpdb->posts WHERE (post_type = 'post' OR post_type = 'page') AND (post_status = 'publish' OR post_status = 'private')");$last = date('Y-n-j', strtotime($last[0]->MAX_m));echo $last; ?></strong> 
 </div>
--->
-</div>
-<div id="divcom">
 <?php if ( is_home() ) { ?>
 <div class="banner_top">
-    <!--头部焦点图-->
-	<?php 	if(get_option('lovnvns_banner_top')!="")
-    	echo '<div  class=banner>'.get_option('lovnvns_banner_top').'</div>';
+	<!--大幅广告start-->
+	 <div class="adsS" style="display: none;">
+		<?php 	if(get_option('lovnvns_date')!="")
+    	echo get_option('lovnvns_date');
 	?>
+	</div>
+	<div class="adsB">
+		<!-- <a href="http://hanjia.xdf.cn/?adpl=XDF_index_juanlianchuang_960*450&amp;adct=hanjiaban_zhuanti" target="_blank">
+			<img src="http://images.xdf.cn/v4/images/index/960x450v3.jpg" alt="秋季班" onload="showAds()">
+		</a> -->
+		<?php 	if(get_option('lovnvns_banner_top')!="")
+    	echo get_option('lovnvns_banner_top');
+		?>
+	</div> 
+	<!--<div class="adsS" style="display: none;">
+		<a href="http://hanjia.xdf.cn/?adpl=XDF_index_juanlianchuang_960*450&amp;adct=hanjiaban_zhuanti" target="_blank">
+		<img src="http://images.xdf.cn/v4/images/index/960x50v3.jpg" alt="秋季班">
+		</a>
+	</div>
+
+	<div class="adsB" style="display: block;">
+		<a href="http://hanjia.xdf.cn/?adpl=XDF_index_juanlianchuang_960*450&amp;adct=hanjiaban_zhuanti" target="_blank">
+			<img src="http://images.xdf.cn/v4/images/index/960x450v3.jpg" alt="秋季班" onload="showAds()">
+		</a>
+	</div>-->
+	<!--大幅广告结束-->
 	<div id="turn" class="turn">
-	<div class="turn-loading">
-		<img src="<?php bloginfo('template_directory'); ?>/images/loading.gif" /></div>
-	<!--内容广告-->
-	<ul class="turn-pic">
-		<?php if(get_option('lovnvns_banner_ad')!="") echo get_option('lovnvns_banner_ad');?>
-	</ul>
-</div>
+		<div class="turn-loading">
+			<img src="<?php bloginfo('template_directory'); ?>/images/loading.gif" /></div>
+		<!--内容广告-->
+		<ul class="turn-pic">
+			<?php if(get_option('lovnvns_banner_ad')!="") echo get_option('lovnvns_banner_ad');?>
+		</ul>
+	</div>
 </div>
 <?php } ?>
+<div id="divcom">
+
 <div class="main">
 
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/banner.js"></script>
