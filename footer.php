@@ -17,7 +17,7 @@
 			<img src="<?php bloginfo('template_directory'); ?>/images/logo1.gif" /></div> -->
 			<div class="side">
 				<ul>
-					<li><a href="javascript:openWindows();"><div class="sidebox"><img src="<?php bloginfo('template_url'); ?>/images/side/side_icon02.png">关注微信</div></a></li>
+					<li><a class="nx-pop-weixin" href="javascript:;"><div class="sidebox"><img src="<?php bloginfo('template_url'); ?>/images/side/side_icon02.png">关注微信</div></a></li>
 					<li><a href="tencent://message/?uin=<?php if(get_option('lovnvns_rss')!="") echo get_option('lovnvns_rss'); ?>&Site=在线QQ&Menu=yes"><div class="sidebox"><img src="<?php bloginfo('template_url'); ?>/images/side/side_icon04.png">QQ客服</div></a></li>
 					<li>
 						<a href="<?php if(get_option('lovnvns_weibo')!="") echo get_option('lovnvns_weibo'); ?>" target="_blank">
@@ -37,16 +37,11 @@
 	</div>
 </div>
 </body>
-<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/semantic.css" />
- <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.js"></script>
-<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/semantic.min.js"></script>
+
+
 <script type="text/javascript">
 $(document).ready(function(){
-    $(".side ul li").hover(function(){
-		$(this).find(".sidebox").stop().animate({"width":"124px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#ae1c1c"})	
-	},function(){
-		$(this).find(".sidebox").stop().animate({"width":"54px"},200).css({"opacity":"0.8","filter":"Alpha(opacity=80)","background":"#000"})	
-	});
+    
 });
 
 function goTop(){
@@ -54,9 +49,9 @@ function goTop(){
 }
 
 function openWindows(){
-		$('.weixin.ui.modal').modal('show');
-		var imgsrc=$("img.weixin").attr('original');
-		//$("img.weixin").attr("src",imgsrc); 
-	  }
+        
+        //var imgsrc=$("img.weixin").attr('original');
+        //$("img.weixin").attr("src",imgsrc); 
+      }
 </script>
 </html>

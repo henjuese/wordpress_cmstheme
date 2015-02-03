@@ -454,5 +454,34 @@ function post_views($before = '(点击 ', $after = ' 次)', $echo = 1)
   else return $views;
 }
 
+//获取文章中的第一幅图片
+function catch_the_image( $id ) {
+	// global $post, $posts;
+	$first_img = '';
+
+	// 如果设置了缩略图
+	$post_thumbnail_id = get_post_thumbnail_id( $id );
+	if ( $post_thumbnail_id ) {
+	    $output = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
+	    $first_img = $output[0];
+	}else { // 没有缩略图，查找文章中的第一幅图片
+	    //ob_start();
+	   // ob_end_clean();
+	    //return get_post($id)->post_content;
+	    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_post($id)->post_content, $matches);
+	   
+	    $first_img = $matches [1] [0];
+
+	    if(empty($first_img)){ // 既没有缩略图，文中也没有图，设置一幅默认的图片
+	      	$first_img ="";//一张默认的图片
+	    }/**/
+
+	    
+	}
+	return $first_img;
+}
+
+
+
 
 ?>

@@ -235,7 +235,7 @@ function lovnvns_form() {
                 <td>
                     <textarea style="width:35em; height:10em;" name="lovnvns_banner_ad"><?php echo get_option('lovnvns_banner_ad'); ?></textarea>
                     <br />
-					<span class="description">banner广告代码，推荐大小： size: 748*180<br />不设置则为空<br />示例：<DIV class="dp-highlighter nogutter"style="width:420px;"><DIV class=bar></DIV>
+					<span class="description">banner广告代码，推荐大小： size: 980*180<br />不设置则为空<br />示例：<DIV class="dp-highlighter nogutter"style="width:420px;"><DIV class=bar></DIV>
 <OL class=dp-c start=0>
 <LI class=alt><SPAN><SPAN>&lt;li&gt;&lt;a&nbsp;href=</SPAN><SPAN class=string>"链接地址"</SPAN><SPAN>&gt;&lt;img&nbsp;src=</SPAN><SPAN class=string>"图片地址"</SPAN><SPAN>&nbsp;/&gt;&lt;/a&gt;&lt;/li&gt; &nbsp;&nbsp;</SPAN></SPAN></LI>
 <LI><SPAN>&lt;li&gt;&lt;a&nbsp;href=</SPAN><SPAN class=string>"链接地址"</SPAN><SPAN>&gt;&lt;img&nbsp;src=</SPAN><SPAN class=string>"图片地址"</SPAN><SPAN>&nbsp;/&gt;&lt;/a&gt;&lt;/li&gt; &nbsp;&nbsp;</SPAN></SPAN></LI>

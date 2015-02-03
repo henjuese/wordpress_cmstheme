@@ -23,14 +23,6 @@
 			</li>
 			<?php  endwhile;  endif;  ?>
 		</ul>
-		<!-- <ul>
-			<li>
-				<span></span>
-				 //头部公告
-				<?php //if(get_option('lovnvns_announce')!="") echo get_option('lovnvns_announce');?>
-
-		    </li>
-	   </ul> -->
 </div>
 <div id="nav_searchbox">
 	<form action="<?php bloginfo('url'); ?>
@@ -51,39 +43,24 @@
 	?>
 	</div>
 	<div class="adsB">
-		<!-- <a href="http://hanjia.xdf.cn/?adpl=XDF_index_juanlianchuang_960*450&amp;adct=hanjiaban_zhuanti" target="_blank">
-			<img src="http://images.xdf.cn/v4/images/index/960x450v3.jpg" alt="秋季班" onload="showAds()">
-		</a> -->
 		<?php 	if(get_option('lovnvns_banner_top')!="")
     	echo get_option('lovnvns_banner_top');
 		?>
-	</div> 
-	<!--<div class="adsS" style="display: none;">
-		<a href="http://hanjia.xdf.cn/?adpl=XDF_index_juanlianchuang_960*450&amp;adct=hanjiaban_zhuanti" target="_blank">
-		<img src="http://images.xdf.cn/v4/images/index/960x50v3.jpg" alt="秋季班">
-		</a>
 	</div>
-
-	<div class="adsB" style="display: block;">
-		<a href="http://hanjia.xdf.cn/?adpl=XDF_index_juanlianchuang_960*450&amp;adct=hanjiaban_zhuanti" target="_blank">
-			<img src="http://images.xdf.cn/v4/images/index/960x450v3.jpg" alt="秋季班" onload="showAds()">
-		</a>
-	</div>-->
 	<!--大幅广告结束-->
 	<div id="turn" class="turn">
 		<div class="turn-loading">
 			<img src="<?php bloginfo('template_directory'); ?>/images/loading.gif" /></div>
-		<!--内容广告-->
+		<!--头部焦点广告-->
 		<ul class="turn-pic">
 			<?php if(get_option('lovnvns_banner_ad')!="") echo get_option('lovnvns_banner_ad');?>
 		</ul>
 	</div>
 </div>
 <?php } ?>
+
 <div id="divcom">
-
 <div class="main">
-
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/banner.js"></script>
 <div id="divleft1">
 <DIV id="imgPlay">
@@ -166,26 +143,30 @@
 		</ul>
 </div>
 </div>
+<!--图片展示start-->
 <?php if (get_option('lovnvns_show_on') == '1') { ?>
 <div id="divleft">
-<ul class="artist_l">
-	<?php query_posts( array('showposts' =>
-	18,'cat' =>get_option('lovnvns_show'))); $i=1; ?>
-	<?php while (have_posts()) : the_post(); ?>
-	<li class="a<?php echo $i;$i++; ?>
-		">
-		<?php echo get_the_post_thumbnail($post->
-		ID, 'thumbnail'); ?>
-		<a href="<?php the_permalink(); ?>
-			" title="
-			<?php the_title(); ?>
-			">
-			<?php the_title(); ?></a>
-	</li>
-	<?php endwhile; ?></ul>
+	<ul class="artist_l">
+		<?php query_posts( array(
+		                     'showposts' =>18,
+		                     'cat' =>get_option('lovnvns_show')
+		                     )
+		                  ); 
+		       $i=1; 
+		?>
+		<?php while (have_posts()) : the_post(); ?>
+		<li class="a<?php echo $i;$i++; ?>">
+		    <img src="<?php echo catch_the_image($post->ID)?>"/>
+			<?php //echo get_the_post_thumbnail($post->ID, 'thumbnail'); ?>
+			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+		</li>
+		<?php endwhile; ?>
+	</ul>
 </div>
 <?php { echo ''; } ?>
 <?php } else { } ?>
+<!--图片展示end-->
+
 <!-- cms up -->
 <div id="divleftcms">
 <?php $display_categories = explode(',', get_option('lovnvns_up') ); 
@@ -338,20 +319,21 @@ foreach ($display_categories as $category) { ?>
 <?php } ?></div>
 <!-- end: cms un -->
 </div>
-<?php get_sidebar(); ?></div>
+<?php get_sidebar(); ?>
+</div>
 <div id="botcont">
-<div id="botcontbar">
-<span>
-<a href="<?php if(get_option('lovnvns_links')!="") echo get_option('lovnvns_links') ?>">更多链接</a>
-</span>
-<h3>友情链接</h3>
-</div>
-<div id="botcontbody">
-<ul>
-<?php wp_list_bookmarks('title_li=&categorize=0&category=2&orderby=rand&show_images=0'); ?></ul>
-</div>
+	<div id="botcontbar">
+		<span>
+		<a href="<?php if(get_option('lovnvns_links')!="") echo get_option('lovnvns_links') ?>">更多链接</a>
+		</span>
+		<h3>友情链接</h3>
+	</div>
+	<div id="botcontbody">
+		<ul>
+		<?php wp_list_bookmarks('title_li=&categorize=0&orderby=rand&show_images=0'); ?>
+		</ul>
+	</div>
 </div>
 <div class="clear"></div>
 <?php get_footer(); ?>
-
 

@@ -70,7 +70,9 @@ function scrollNews(obj){
 function showAds(){
 	$(".adsS").fadeOut("slow",function(){$('.adsB').slideDown('show')}); 
 	setTimeout(function(){
-		$('.adsB').slideUp('slow',function(){$('.adsS').fadeIn('show');});
+		$('.adsB').slideUp('slow',function(){
+			$('.adsS').fadeIn('show');
+		});
 	},5000);
     
 }
