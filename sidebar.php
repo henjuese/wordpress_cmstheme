@@ -1,36 +1,4 @@
 <div id="sidebar">
-	<!-- <div class="widget1">
-		<a href="<?php if(get_option('lovnvns_about')!="") echo get_option('lovnvns_about'); ?>" class="but_scupl">关于我们</a>
-		<a href="http://www.bofaziran.com/112/" class="but_buyl" target="_blank">WordPress主题lovnvns 4.0下载</a>
-		<ul id="subnavs">
-			<li>
-				<a href="<?php bloginfo('siteurl'); ?>
-					/" class="zy_subnavs" onClick="javascript:window.external.AddFavorite('
-					<?php bloginfo('siteurl'); ?>
-					/','
-					<?php bloginfo('name'); ?>
-					')" title="
-					<?php bloginfo('name'); ?>
-					">
-收藏本站
-				</a>
-			</li>
-			<li>
-				<a href='<?php bloginfo('siteurl'); ?>
-					/' onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('
-					<?php bloginfo('siteurl'); ?>/');" class="zy_subnavs">设为首页</a>
-			</li>
-			<li>
-				<a href="<?php if(get_option('lovnvns_sitemap')!="") echo get_option('lovnvns_sitemap'); ?>" class="zy_subnavs" target="_blank">站点地图</a>
-			</li>
-			<li>
-				<a href="<?php if(get_option('lovnvns_sitemap_baidu')!="") echo get_option('lovnvns_sitemap_baidu'); ?>" class="zy_subnavs" target="_blank">百度地图</a>
-			</li>
-		</ul>
-	</div> -->
-
-
-
 <script type="text/jscript" src="<?php bloginfo('template_url'); ?>/js/jquery.min.js"></script>
 <script type="text/jscript">
 $(document).ready(function(e) {
@@ -104,6 +72,7 @@ $(document).ready(function(e) {
 			</div>
 </ul>
 </div> -->
+
 <!--
 <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('小工具1') ) : ?>
 <?php endif; ?>

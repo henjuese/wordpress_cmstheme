@@ -5,8 +5,7 @@
 		当前位置：
 		<a href="<?php bloginfo('siteurl'); ?>/" title="返回首页">首页</a>
 		>
-		<?php echo get_category_parents( get_query_var('cat') , true , ' >
-		' ); ?>文章
+		<?php echo is_wp_error($cat_parents=get_category_parents( get_query_var('cat') , true , ' >' ))?"":$cat_parents ?>文章
 		<?php } ?>
 		<?php if ( is_month() ) { ?>
 		当前位置：

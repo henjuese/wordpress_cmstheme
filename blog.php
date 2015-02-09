@@ -11,76 +11,87 @@
   </ul>
 </div>
 <!-- <div id="gongaor">
-  建站日期： <strong><?php echo get_option('lovnvns_date');?></strong>
-  运行天数：
-  <strong><?php echo floor((time()-strtotime(get_option('lovnvns_date')))/86400); ?></strong>
-  天　最后更新：
-  <strong>
-    <?php $last = $wpdb->
-    get_results("SELECT MAX(post_modified) AS MAX_m FROM $wpdb->posts WHERE (post_type = 'post' OR post_type = 'page') AND (post_status = 'publish' OR post_status = 'private')");$last = date('Y-n-j', strtotime($last[0]->MAX_m));echo $last; ?></strong> 
-</div> -->
+建站日期： <strong><?php echo get_option('lovnvns_date');?></strong>
+运行天数：
+<strong><?php echo floor((time()-strtotime(get_option('lovnvns_date')))/86400); ?></strong>
+天　最后更新：
+<strong>
+  <?php $last = $wpdb->
+  get_results("SELECT MAX(post_modified) AS MAX_m FROM $wpdb->posts WHERE (post_type = 'post' OR post_type = 'page') AND (post_status = 'publish' OR post_status = 'private')");$last = date('Y-n-j', strtotime($last[0]->MAX_m));echo $last; ?></strong> 
+</div>
+-->
 </div>
 <div id="divcom">
 <?php if(get_option('lovnvns_banner_top')!="")
       echo '<div  class=banner>'.get_option('lovnvns_banner_top').'</div>
-';else echo '
-<div class=banner>
-<a href=http://www.1188sj.com/?Intr=37648 target=_blank>
-  <img src=http://www.caidaoke.com/ad/xsj.jpg border=0 />
-</a>
-</div>
-'
-  ?>
+';  ?>
 <div class="main">
 <div id="turn" class="turn">
-  <div class="turn-loading">
-    <img src="<?php bloginfo('template_directory'); ?>/images/loading.gif" /></div>
-  <ul class="turn-pic">
-    <?php if(get_option('lovnvns_banner_ad')!="") echo get_option('lovnvns_banner_ad');else echo "<li>
-    <a href='http://www.bofaziran.com/112/' target='_blank'>
-      <img src='http://www.caidaoke.com/ad/banner-4.jpg' />
-    </a>
-  </li>
-  <li>
-    <a href='http://www.1188sj.com/?Intr=37648' target='_blank'>
-      <img src='http://www.caidaoke.com/ad/xsj1.jpg' border='0' />
-    </a>
-  </li>
-  <li>
-    <a href='http://www.1188sj.com/?Intr=37648' target='_blank'>
-      <img src='http://www.caidaoke.com/ad/xsj2.jpg' border='0' />
-    </a>
-  </li>
-  " ?>
+<div class="turn-loading">
+  <img src="<?php bloginfo('template_directory'); ?>/images/loading.gif" /></div>
+<ul class="turn-pic">
+  <?php if(get_option('lovnvns_banner_ad')!="") echo get_option('lovnvns_banner_ad');?>
 </ul>
 </div>
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/banner.js"></script>
 <div id="divleft1">
 <DIV id=imgPlay>
-  <UL class=imgs id=actor>
-    <?php $previous_posts = get_posts('numberposts=8&meta_key=banner&meta_value=on'); foreach($previous_posts as $post) : setup_postdata($post); ?>
-    <li>
-      <a href="<?php the_permalink(); ?>
-        " title="
-        <?php the_title(); ?>
-        ">
-        <?php lovnvns_slide_image()?></a>
-    </li>
-    <?php endforeach; ?></UL>
-  <DIV class=num>
-    <P class=lc></P>
-    <P class=mc></P>
-    <P class=rc></P>
-  </DIV>
-  <DIV class=num id=numInner></DIV>
-  <DIV class=prev>上一张</DIV>
-  <DIV class=next>下一张</DIV>
+<UL class=imgs id=actor>
+  <?php $previous_posts = get_posts('numberposts=8&meta_key=banner&meta_value=on'); foreach($previous_posts as $post) : setup_postdata($post); ?>
+  <li>
+    <a href="<?php the_permalink(); ?>
+      " title="
+      <?php the_title(); ?>
+      ">
+      <?php lovnvns_slide_image()?></a>
+  </li>
+  <?php endforeach; ?></UL>
+<DIV class=num>
+  <P class=lc></P>
+  <P class=mc></P>
+  <P class=rc></P>
+</DIV>
+<DIV class=num id=numInner></DIV>
+<DIV class=prev>上一张</DIV>
+<DIV class=next>下一张</DIV>
 </DIV>
 <div class="zt_con">
-  <?php    
+<?php    
         $sticky = get_option('sticky_posts');
         rsort( $sticky );
         $sticky = array_slice( $sticky, 0, 1);
+    
+        query_posts( array( 'post__in' =>
+$sticky,
+                                   'caller_get_posts' => 1 ) );
+        if (have_posts()) :
+        while (have_posts()) : the_post();
+?>
+<h2>
+  <a href="<?php the_permalink(); ?>
+    " title="
+    <?php the_title(); ?>
+    ">
+    <?php the_title(); ?></a>
+</h2>
+<p>
+  分类：
+  <?php the_category(', ') ?>
+  |
+  <?php comments_popup_link ('评论数：0','评论数：1','评论数：%'); ?>
+  |
+  <?php if(function_exists('the_views')) { print '被围观 '; the_views(); print '+';  } ?>
+  <?php edit_post_link('编辑', ' | '); ?></p>
+<span>
+  <?php echo wp_strimwidth(strip_tags(apply_filters('the_content', $post->post_content)), 0, 90,"……"); ?></span>
+<?php endwhile; ?>
+<?php endif; ?>
+<div class="hr"></div>
+<ul>
+  <?php
+        $sticky = get_option('sticky_posts');
+        rsort( $sticky );
+        $sticky = array_slice( $sticky, 1, 6);
     
         query_posts( array( 'post__in' =>
   $sticky,
@@ -88,66 +99,34 @@
         if (have_posts()) :
         while (have_posts()) : the_post();
 ?>
-  <h2>
+  <li>
     <a href="<?php the_permalink(); ?>
-      " title="
+      "
+title="
       <?php the_title(); ?>
       ">
       <?php the_title(); ?></a>
-  </h2>
-  <p>
-    分类：
-    <?php the_category(', ') ?>
-    |
-    <?php comments_popup_link ('评论数：0','评论数：1','评论数：%'); ?>
-    |
-    <?php if(function_exists('the_views')) { print '被围观 '; the_views(); print '+';  } ?>
-    <?php edit_post_link('编辑', ' | '); ?></p>
-  <span>
-    <?php echo wp_strimwidth(strip_tags(apply_filters('the_content', $post->post_content)), 0, 90,"……"); ?></span>
-  <?php endwhile; ?>
-  <?php endif; ?>
-  <div class="hr"></div>
-  <ul>
-    <?php
-        $sticky = get_option('sticky_posts');
-        rsort( $sticky );
-        $sticky = array_slice( $sticky, 1, 6);
-    
-        query_posts( array( 'post__in' =>
-    $sticky,
-                                   'caller_get_posts' => 1 ) );
-        if (have_posts()) :
-        while (have_posts()) : the_post();
-?>
-    <li>
-      <a href="<?php the_permalink(); ?>
-        "
-title="
-        <?php the_title(); ?>
-        ">
-        <?php the_title(); ?></a>
-    </li>
-    <?php     endwhile;  endif;  ?></ul>
+  </li>
+  <?php     endwhile;  endif;  ?></ul>
 </div>
 </div>
 <?php if (get_option('lovnvns_show_on') == '1') { ?>
 <div id="divleft">
 <ul class="artist_l">
-  <?php query_posts( array('showposts' =>
-  18,'cat' =>get_option('lovnvns_show'))); $i=1; ?>
-  <?php while (have_posts()) : the_post(); ?>
-  <li class="a<?php echo $i;$i++; ?>
+<?php query_posts( array('showposts' =>
+18,'cat' =>get_option('lovnvns_show'))); $i=1; ?>
+<?php while (have_posts()) : the_post(); ?>
+<li class="a<?php echo $i;$i++; ?>
+  ">
+  <?php echo get_the_post_thumbnail($post->
+  ID, 'thumbnail'); ?>
+  <a href="<?php the_permalink(); ?>
+    " title="
+    <?php the_title(); ?>
     ">
-    <?php echo get_the_post_thumbnail($post->
-    ID, 'thumbnail'); ?>
-    <a href="<?php the_permalink(); ?>
-      " title="
-      <?php the_title(); ?>
-      ">
-      <?php the_title(); ?></a>
-  </li>
-  <?php endwhile; ?></ul>
+    <?php the_title(); ?></a>
+</li>
+<?php endwhile; ?></ul>
 </div>
 <?php { echo ''; } ?>
 <?php } else { } ?>
@@ -159,35 +138,35 @@ title="
 <?php while(have_posts()) : the_post(); ?>
 <div id="divleft">
 <div id="post_list">
-  <span>
-    <?php comments_popup_link ('0°','+1°','+%°'); ?></span>
-  <h2>
-    <a href="<?php the_permalink() ?>
-      " rel="bookmark" title="
-      <?php the_title_attribute(); ?>
-      ">
-      <?php the_title(); ?></a>
-  </h2>
-  <div class="hr"></div>
-  <p>
-    <?php the_time('Y年m月d日') ?>
-    | 作者:
-    <?php the_author (); ?>
-    |
-    <?php if(function_exists('the_views')) { print '被围观 '; the_views();  } ?>
-    <?php edit_post_link('编辑', ' | '); ?></p>
-  <div id="post_listl">
-    <?php include('includes/thumbnail.php'); ?></div>
-  <div id="post_listr">
-    <?php echo mb_strimwidth(strip_tags(apply_filters('the_content', $post->post_content)), 0, 420,"......"); ?></div>
-  <div id="post_list_tags">
-    关键词：
-    <?php the_tags('', ', ', ''); ?></div>
-  <div id="post_list_more">
-    <a href="<?php the_permalink() ?>
-      " title="详细阅读
-      <?php the_title(); ?>" rel="bookmark" class="title">详细阅读</a>
-  </div>
+<span>
+  <?php comments_popup_link ('0°','+1°','+%°'); ?></span>
+<h2>
+  <a href="<?php the_permalink() ?>
+    " rel="bookmark" title="
+    <?php the_title_attribute(); ?>
+    ">
+    <?php the_title(); ?></a>
+</h2>
+<div class="hr"></div>
+<p>
+  <?php the_time('Y年m月d日') ?>
+  | 作者:
+  <?php the_author (); ?>
+  |
+  <?php if(function_exists('the_views')) { print '被围观 '; the_views();  } ?>
+  <?php edit_post_link('编辑', ' | '); ?></p>
+<div id="post_listl">
+  <?php include('includes/thumbnail.php'); ?></div>
+<div id="post_listr">
+  <?php echo mb_strimwidth(strip_tags(apply_filters('the_content', $post->post_content)), 0, 420,"......"); ?></div>
+<div id="post_list_tags">
+  关键词：
+  <?php the_tags('', ', ', ''); ?></div>
+<div id="post_list_more">
+  <a href="<?php the_permalink() ?>
+    " title="详细阅读
+    <?php the_title(); ?>" rel="bookmark" class="title">详细阅读</a>
+</div>
 </div>
 </div>
 <?php endwhile; ?>
@@ -209,11 +188,3 @@ title="
 </div>
 <div class="clear"></div>
 <?php get_footer(); ?>
-<!-- Baidu Button BEGIN -->
-<script type="text/javascript" id="bdshare_js" data="type=slide&img=0&pos=left" ></script>
-<script type="text/javascript" id="bdshell_js"></script>
-<script type="text/javascript">
-    var bds_config = {"bdTop":63};
-    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
-</script>
-<!-- Baidu Button END -->

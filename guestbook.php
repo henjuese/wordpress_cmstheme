@@ -25,22 +25,7 @@
             <div class="turn-loading">
                 <img src="<?php bloginfo('template_directory'); ?>/images/loading.gif" /></div>
             <ul class="turn-pic">
-                <?php if(get_option('lovnvns_banner_ad')!="") echo get_option('lovnvns_banner_ad');else echo "<li>
-                <a href='http://www.bofaziran.com/112/' target='_blank'>
-                    <img src='http://www.caidaoke.com/ad/banner-4.jpg' />
-                </a>
-            </li>
-            <li>
-                <a href='http://www.1188sj.com/?Intr=37648' target='_blank'>
-                    <img src='http://www.caidaoke.com/ad/xsj1.jpg' border='0' />
-                </a>
-            </li>
-            <li>
-                <a href='http://www.1188sj.com/?Intr=37648' target='_blank'>
-                    <img src='http://www.caidaoke.com/ad/xsj2.jpg' border='0' />
-                </a>
-            </li>
-            " ?>
+                <?php if(get_option('lovnvns_banner_ad')!="") echo get_option('lovnvns_banner_ad'); ?>
         </ul>
     </div>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/banner.js"></script>

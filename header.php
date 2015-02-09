@@ -31,7 +31,7 @@
             placeholder : "<?php bloginfo('template_url'); ?>/images/grey.gif",
             effect      : "fadeIn"                      
         });
-
+        //首页固定浮动框
         $(".side ul li").hover(function(){
             $(this).find(".sidebox").stop().animate({"width":"124px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#ae1c1c"});    
         }, function(){

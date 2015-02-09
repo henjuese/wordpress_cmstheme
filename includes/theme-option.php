@@ -297,6 +297,32 @@ function lovnvns_form() {
 		color:#679729;}</style>
 		<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/highlight.css" />
 </div>
+<?php
+function show_id() {
+    global $wpdb;
+    $request = "SELECT $wpdb->terms.term_id, name,count FROM $wpdb->terms ";
+    $request .= " LEFT JOIN $wpdb->term_taxonomy ON $wpdb->term_taxonomy.term_id = $wpdb->terms.term_id ";
+    $request .= " WHERE $wpdb->term_taxonomy.taxonomy = 'category' ";
+    $request .= " ORDER BY term_id asc";
+    $categorys = $wpdb->get_results($request);
+    foreach ($categorys as $category) { 
+        $output = '<ol>［<font color=#0196e3>'.$category->term_id.'</font>］'.$category->name.'[<font color=red>'.$category->count.'</font>]</ol>';
+        echo $output;
+    }
+}
+?>
+
+<style type="text/css">
+    
+    .categoryid{position:fixed;width:184px;height:355px;background:#fff;right:30px;top:114px;z-index:100;OVERFLOW: auto;}
+    .categoryid ol{height:8px;line-height: 8px;}
+</style>
+<div class="categoryid">
+    <span class="show_id">
+        <ol><h4>ID 分类对应  文章总数</h4></ol>
+        <?php show_id();?>
+    </span>
+</div>
 <!-- Options Form begin -->
 <?php } 
 	// create custom plugin settings menu

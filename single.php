@@ -4,7 +4,11 @@
         当前位置：
         <a href="<?php bloginfo('siteurl'); ?>/" title="返回首页">首页</a>
         >
-        <?php $categories = get_the_category(); echo(get_category_parents($categories[0]->term_id, TRUE, ' > '));  ?>正文</div>
+        <?php $categories = get_the_category(); 
+         //echo(get_category_parents($categories[0]->term_id, TRUE, ' > '));
+        echo is_wp_error($cat_parents=get_category_parents($categories[0]->term_id, TRUE, ' &gt; '))?"":$cat_parents;  
+        ?>
+     正文</div>
     <!-- <div id="gongaor">
     建站日期： <strong><?php echo get_option('lovnvns_date');?></strong>
     运行天数： <strong><?php echo floor((time()-strtotime(get_option('lovnvns_date')))/86400); ?></strong>
